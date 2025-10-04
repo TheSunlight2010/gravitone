@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GRAVITONE - Characters</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #330000 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: auto;
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: clamp(1rem, 5vw, 2rem);
+            left: clamp(1rem, 5vw, 2rem);
+            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            color: #ff6666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 0, 0, 0.4);
+            color: #ffffff;
+        }
+        
+        .characters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 5rem;
+        }
+        
+        .page-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: #ff6666;
+            text-align: center;
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+            text-shadow: 0 2px 10px rgba(255, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+        
+        .character-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.5);
+            border-color: #ff3333;
+        }
+        
+        .character-name {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: #ff0000;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 5px rgba(255, 0, 0, 0.7);
+            letter-spacing: 0.05em;
+        }
+        
+        .character-description {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            color: #ff9999;
+            line-height: 1.7;
+            text-shadow: 0 1px 3px rgba(255, 0, 0, 0.3);
+        }
+        
+        .coming-soon {
+            text-align: center;
+            color: #ff6666;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin-top: clamp(2rem, 6vw, 3rem);
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        .prophecy-container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .prophecy-title {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: #ff0000;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 5px rgba(255, 0, 0, 0.7);
+            letter-spacing: 0.05em;
+        }
+        
+        .prophecy-text {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            color: #ff9999;
+            line-height: 1.7;
+            text-shadow: 0 1px 3px rgba(255, 0, 0, 0.3);
+            white-space: pre-line;
+        }
+        
+        @media (max-width: 768px) {
+            .characters-container {
+                padding-top: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='index.html'">← BACK</button>
+    
+    <div class="characters-container">
+        <h1 class="page-title">CHARACTER DESCRIPTIONS</h1>
+        
+        <div class="character-card">
+            <h2 class="character-name">THE PLAYER</h2>
+            <p class="character-description">
+                The leader of the three heroes, destined to banish the entity trapping everyone in a limbo. With unwavering determination and the power to resist corruption, The Player must navigate through the twisted reality and make choices that will determine the fate of all trapped souls.
+            </p>
+        </div>
+        
+        <div class="character-card">
+            <h2 class="character-name">PURSUIT</h2>
+            <p class="character-description">
+                The entity trapping everyone in a limbo. She can infect anything she chooses, turning what she touches into a mindless being known as Chase. Pursuit feeds on fear and desperation, growing stronger with each soul that succumbs to her influence. Her presence corrupts the very fabric of reality.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">THE RUMBLER</h2>
+            <p class="character-description">
+                A swirling figure covered in darkness, impossible to fully comprehend as its form constantly shifts and writhes. The Rumbler moves through the limbo like liquid shadow, its presence causing reality to ripple and distort. Those who gaze upon it too long find their minds unraveling, unable to process the eldritch geometry of its ever-changing silhouette.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">CRACK</h2>
+            <p class="character-description">
+                A smoky, ethereal being that can compress itself into the thinnest cracks and crevices, lying in wait for unsuspecting prey. Crack is the ultimate ambush predator, patient and silent until the moment its target passes overhead. With lightning speed, it lunges upward from its hiding place, a deadly strike that leaves no time for escape or mercy.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">CHASE</h2>
+            <p class="character-description">
+                The twisted remains of those infected by Pursuit's corruption. Once vibrant beings, they are now hollowed-out shells driven by a single imperative: to spread the infection further. Their movements are jerky and unnatural, as if reality itself recoils from their presence. The Mini Chase variant serves as a projectile weapon, a concentrated burst of Pursuit's will that seeks out targets with unerring accuracy.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">DARTIE</h2>
+            <p class="character-description">
+                A bizarre entity with a razor-sharp spear where its eye should be. Dartie exists solely as a living projectile, its entire existence dedicated to serving its master, King Dart. When launched, it becomes a blur of motion, its spear-eye piercing through obstacles and enemies alike. Despite its simple purpose, Dartie possesses a strange nobility in its unwavering loyalty to its sovereign.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">TIMELINE</h2>
+            <p class="character-description">
+                A mysterious girl composed entirely of crimson text, her form shifting and flowing with every word she speaks. Her body appears as living typography, letters and symbols cascading across her silhouette in an endless stream of crimson consciousness. Each phrase she utters becomes part of her physical being, making her both beautiful and unsettling—a walking embodiment of language given terrifying life.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">DART</h2>
+            <p class="character-description">
+                The once-mighty King of the Darties, a sovereign of projectiles who ruled over his spawn with absolute authority. His reign was cut tragically short when Pursuit's corruption found him, transforming the proud monarch into another mindless Chase before his secrets could be fully understood. Now he exists as a twisted echo of his former glory, his regal nature forever lost to the infection.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">RAVAGER</h2>
+            <p class="character-description">
+                A grotesque flying entity composed of viscous blue goo that constantly drips and reforms. At its center gapes a disturbing orifice from which it launches purple pellet projectiles with deadly accuracy. The Ravager patrols the skies of the limbo, its amorphous body allowing it to squeeze through the tightest spaces while raining down its toxic ammunition upon any who dare to traverse its domain.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">FRIEND</h2>
+            <p class="character-description">
+                Originally an agent of Pursuit, Friend was sent to help The Player on their journey. Her mission was simple: gain their trust, offer assistance, and when the moment was right, betray them completely. But as she witnessed The Player, something unexpected happened. The thought of betrayal began to sicken her. Now she struggles with divided loyalties, her obsessive desire to be the best friend she can be conflicting with her original mission.
+            </p>
+        </div>
+
+        <div class="character-card">
+            <h2 class="character-name">THE PRINCE</h2>
+            <p class="character-description">
+                A perfectly circular entity encased in gleaming metal armor that reflects the twisted reality around it like a dark mirror. The Prince serves as Pursuit's most loyal knight, bound by an oath that transcends mere allegiance. Despite his role as enforcer, he maintains an unlikely friendship with TimeLine, their conversations forming a strange poetry of metallic resonance and crimson text. His circular form allows him to roll through the limbo at tremendous speeds, his armor rendering him nearly invulnerable as he carries out Pursuit's will until the very end—though even he cannot foresee what that end might bring.
+            </p>
+        </div>
+
+        <div class="prophecy-container">
+            <h2 class="prophecy-title">THE PROPHECY</h2>
+            <div class="prophecy-text">
+                WHEN ALL WAS LOST, THE VOID DID SING,<br>
+                A THUNDER KEPT IN ENDLESS RING.<br><br>
+                
+                STARS WERE BROKEN, SPILLED LIKE WINE,<br>
+                TIME COLLAPSED ACROSS THE LINE.<br><br>
+                
+                ONE AWOKE WHERE NOTHING STAYED,<br>
+                ALONE, UNTOUCHED, YET NOT AFRAID.<br><br>
+                
+                THE ENTITY PURSUED THE GATE<br>
+                WHISPERED DOOM AND TWISTED FATE.<br><br>
+                
+                A SHADOW TOUCHED THE WORLD OF DART,<br>
+                CORRUPTION FESTERED IN HIS HEART.<br><br>
+                
+                THE HEROES EMERGE FROM SEPARATE FIRE,<br>
+                THE LEADER, THE GIRL, AND THE EYE OF DESIRE.<br><br>
+                
+                THE FRIEND EMERGED, WITH SPARKS OF LIGHT,<br>
+                TWO TRAVELED THROUGH ETERNAL NIGHT.<br><br>
+                
+                THEY FOUND A WARMTH THEY NEVER KNEW,<br>
+                WHEN LOVE AROSE AND DARKNESS FLEW.<br><br>
+                
+                THE PRINCE OF MASKS THEN CROSSED THEIR PATH,<br>
+                WITH SHADOW WRAPPED AROUND HIS WRATH.<br><br>
+                
+                THE EYE OF DESIRE THEN APPEARED,<br>
+                ONCE BLINDED, NOW THE TRUTH WAS CLEAR.<br><br>
+                
+                THE LEADER STOOD WITH SOUL UNDONE,<br>
+                AND MADE A CHOICE FOR NO ONE'S SUN.<br><br>
+                
+                THE RUMBLER FELT THE DARKNESS BURN,<br>
+                AND LIGHT WITHIN BEGAN TO TURN.<br><br>
+                
+                A FRIEND AND LEADER TORN IN TWO,<br>
+                YET SOULS REMEMBER WHAT IS TRUE.<br><br>
+                
+                A CHASE WAS CLEANSED, ITS FLESH UNDONE,<br>
+                BY RAVAGER AND RUMBLER ONE.<br><br>
+                
+                THEN CRACK, ALIVE, WITH SMOKE DID BREATH,<br>
+                AND MET THE ONE WHO DEALS IN DEATH.<br><br>
+                
+                THE HALFWAY POINT FELL FROM THE SKY,<br>
+                A CLOCK THAT BLEEDS, A SCREAMING CRY.<br><br>
+                
+                THE GIRL AWOKE IN SHARDS OF NIGHT,<br>
+                HER LOYALTY BEGINS TO FIGHT.<br><br>
+                
+                THE WORLD STILL BREAKS WITH EVERY BREATH,<br>
+                THE FUTURE WALKS HAND-IN-HAND WITH DEATH.<br><br>
+                
+                WHO WRITES THE END? THE PAGE IS BLANK.<br>
+                THE LIMBO HOLDS WHAT TIME ONCE SANK.<br><br>
+                
+                AND WHEN THE LAST STAR FINALLY DIES,<br>
+                THE TRUTH SHALL STARE WITH OPEN EYES.
+            </div>
+        </div>
+        
+        <p class="coming-soon">More characters coming soon...</p>
+    </div>
+</body>
+</html>

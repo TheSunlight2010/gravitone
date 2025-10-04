@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GRAVITONE - Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #330000 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: auto;
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: clamp(1rem, 5vw, 2rem);
+            left: clamp(1rem, 5vw, 2rem);
+            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            color: #ff6666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 0, 0, 0.4);
+            color: #ffffff;
+        }
+        
+        .chapter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 5rem;
+        }
+        
+        .chapter-content {
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            padding: clamp(2rem, 6vw, 4rem);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .chapter-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: #ff6666;
+            margin-bottom: clamp(2rem, 6vw, 3rem);
+            text-shadow: 0 2px 10px rgba(255, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+        
+        .chapter-text {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #ff9999;
+            line-height: 1.8;
+            max-width: 800px;
+            text-shadow: 0 1px 3px rgba(255, 0, 0, 0.3);
+        }
+        
+        .loading {
+            color: #ff6666;
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-style: italic;
+        }
+        
+        /* Modal styles */
+        .chapter-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            width: 480px;
+            height: 360px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #330000 100%);
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #ff6666;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+            transform: scale(1.2);
+        }
+
+        .chapter-content-container {
+            padding: clamp(2rem, 6vw, 4rem);
+        }
+
+        .chapter-content .chapter-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: #ff6666;
+            margin-bottom: clamp(2rem, 6vw, 3rem);
+            text-shadow: 0 2px 10px rgba(255, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .chapter-content .chapter-text {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #ff9999;
+            line-height: 1.8;
+            text-shadow: 0 1px 3px rgba(255, 0, 0, 0.3);
+            white-space: pre-line;
+        }
+
+        .loading {
+            color: #ff6666;
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+            
+            .chapter-content-container {
+                padding: clamp(1.5rem, 4vw, 3rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .chapter-container {
+                padding-top: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="goBack()">← BACK</button>
+    
+    <div class="chapter-container">
+        <div class="chapter-content">
+            <h1 class="chapter-title" id="chapterTitle">Loading Chapter...</h1>
+            <div class="chapter-text" id="chapterText">
+                <div class="loading">Retrieving chapter data...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get chapter number from URL
+        function getChapterNumber() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('ch')) || 1;
+        }
+
+        // Load chapter content directly
+        function loadChapter() {
+            const chapterNum = getChapterNumber();
+            const chapterTitle = document.getElementById('chapterTitle');
+            const chapterText = document.getElementById('chapterText');
+            
+            // Chapter content data
+            const chapters = {
+                1: {
+                    title: "CHAPTER 1: BEGINNINGS",
+                    content: "egg"
+                },
+                2: {
+                    title: "CHAPTER 2: FIRST CONTACT",
+                    content: "egg"
+                }
+            };
+            
+            const chapter = chapters[chapterNum];
+            
+            if (chapter) {
+                chapterTitle.textContent = chapter.title;
+                chapterText.innerHTML = `<div class="chapter-text">${chapter.content}</div>`;
+            } else {
+                chapterTitle.textContent = "Chapter Not Found";
+                chapterText.innerHTML = '<div class="loading">Chapter not available</div>';
+            }
+        }
+
+        // Create cancel button and add to page
+        function addCancelButton() {
+            const cancelBtn = document.createElement('button');
+            cancelBtn.textContent = 'CANCEL';
+            cancelBtn.className = 'menu-button';
+            cancelBtn.style.position = 'fixed';
+            cancelBtn.style.bottom = '2rem';
+            cancelBtn.style.right = '2rem';
+            cancelBtn.style.zIndex = '1000';
+            cancelBtn.style.background = 'rgba(255, 0, 0, 0.2)';
+            cancelBtn.style.border = '2px solid #ff0000';
+            cancelBtn.style.color = '#ff6666';
+            cancelBtn.style.padding = '0.8rem 1.5rem';
+            cancelBtn.style.fontSize = '1rem';
+            cancelBtn.style.fontWeight = '700';
+            cancelBtn.style.cursor = 'pointer';
+            cancelBtn.style.transition = 'all 0.3s ease';
+            cancelBtn.style.borderRadius = '8px';
+            
+            cancelBtn.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(255, 0, 0, 0.4)';
+                this.style.color = '#ffffff';
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            cancelBtn.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(255, 0, 0, 0.2)';
+                this.style.color = '#ff6666';
+                this.style.transform = 'translateY(0)';
+            });
+            
+            cancelBtn.addEventListener('click', function() {
+                window.location.href = 'tests.html';
+            });
+            
+            document.body.appendChild(cancelBtn);
+        }
+
+        // Handle back button
+        function goBack() {
+            window.location.href = 'tests.html';
+        }
+
+        // Load chapter when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChapter();
+            addCancelButton();
+        });
+    </script>
+</body>
+</html>
